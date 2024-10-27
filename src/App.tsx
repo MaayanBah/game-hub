@@ -27,8 +27,8 @@ function App() {
           <GenreList
             onSelectedGenre={(genre: Genre) => {
               setSelectedGenre(genre);
-              console.log(genre.name);
             }}
+            selectedGenre={selectedGenre}
           />
         </GridItem>
       </Show>
