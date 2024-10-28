@@ -31,7 +31,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
                 borderRadius={8}
               />
               <Button
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : null}
+                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => {
                   onSelectedGenre(genre);
                 }}
