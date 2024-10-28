@@ -1,50 +1,16 @@
-# React + TypeScript + Vite
+# GameHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GameHub is a video game discovery web app that helps you find new and interesting games to play.
 
-Currently, two official plugins are available:
+<img src="https://github.com/user-attachments/assets/2c99625d-b3f3-430d-a3d4-093735493737" alt="image" width="400"/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### To set up the GameHub website, follow these steps:
 
-## Expanding the ESLint configuration
+1. Clone this repository to your local machine.
+2. Run npm install to install the necessary dependencies.
+3. Obtain a RAWG API key from RAWG API documentation. Note that you'll need to create an account.
+4. Add your API key to src/services/api-client.ts.
+5. Start the web server by running npm run dev.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+You can also visit GameHub directly at: https://game-hub-three-pied.vercel.app/
