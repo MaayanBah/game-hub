@@ -16,6 +16,7 @@ const useData = <T>(
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log(requestConfig);
   useEffect(
     () => {
       setIsLoading(true);

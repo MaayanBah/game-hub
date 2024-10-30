@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/useGames";
 import useGame from "../hooks/useGame";
@@ -10,6 +10,7 @@ import {
   fetchTracks as fetchTopTracks,
 } from "../services/spotify-services";
 import { Track } from "../hooks/usePlaylist";
+import NavBar from "../components/NavBar";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -37,14 +38,28 @@ function GameDetailsPage() {
   }, [playlists]);
 
   return (
-    <>
-      <Text>{data?.name}</Text>
-      <ul>
-        {topTracks.map((track) => {
-          return <li key={track.id}>{track.name}</li>;
-        })}
-      </ul>
-    </>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "main aside"`,
+      }}
+      templateColumns={{
+        base: "1fr",
+        lg: "1fr 200px",
+      }}
+    >
+      <GridItem area="nav">
+        <NavBar onSearch={(searchText) => console.log("search")} />
+      </GridItem>
+      <GridItem area="main">
+        <Text fontSize="3xl">{data?.name}</Text>
+        <ul>
+          {topTracks.map((track) => {
+            return <li key={track.id}>{track.name}</li>;
+          })}
+        </ul>
+      </GridItem>
+    </Grid>
   );
 }
 
