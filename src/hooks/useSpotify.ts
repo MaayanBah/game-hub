@@ -7,7 +7,6 @@ const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET!;
 export const useSpotify = async <T>(
   urlRemainder: string
 ): Promise<T | null> => {
-  console.log(import.meta.env);
   try {
     const tokenResponse = await getAccessToken(clientId, clientSecret);
     const accessToken = tokenResponse.access_token;
