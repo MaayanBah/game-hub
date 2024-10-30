@@ -6,6 +6,7 @@ export interface Track {
   track: boolean;
   popularity: number;
   album: Album;
+  external_urls: { spotify: string };
 }
 
 export interface Album {
