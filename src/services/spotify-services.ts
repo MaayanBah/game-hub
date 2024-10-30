@@ -60,6 +60,5 @@ export const getTopNSongs = async (
   });
 
   const sortedTracks = tracksWithCounts.sort((a, b) => b.count - a.count);
-  console.log(sortedTracks.slice(0, topN));
   return sortedTracks.slice(0, topN).map((tc) => tc.track);
 };

@@ -1,4 +1,4 @@
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/useGames";
 import useGame from "../hooks/useGame";
@@ -11,6 +11,9 @@ import {
 } from "../services/spotify-services";
 import { Track } from "../hooks/usePlaylist";
 import NavBar from "../components/NavBar";
+import TrackCard from "../components/TrackCard";
+import SongCardContainer from "../components/TrackCardContainer";
+import "react-multi-carousel/lib/styles.css";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -49,15 +52,20 @@ function GameDetailsPage() {
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => console.log("search")} />
+        <NavBar onSearch={(searchText) => console.log(searchText)} />
       </GridItem>
-      <GridItem area="main">
+      <GridItem area="main" paddingX={35}>
         <Text fontSize="3xl">{data?.name}</Text>
-        <ul>
+
+        <SimpleGrid>
           {topTracks.map((track) => {
-            return <li key={track.id}>{track.name}</li>;
+            return (
+              <SongCardContainer key={track.id}>
+                <TrackCard track={track} />
+              </SongCardContainer>
+            );
           })}
-        </ul>
+        </SimpleGrid>
       </GridItem>
     </Grid>
   );
