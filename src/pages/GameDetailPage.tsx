@@ -23,6 +23,7 @@ import TrackCardContainer from "../components/TrackCardContainer";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
 import GameCardSkeleton from "../components/CardSkeleton";
+import ExpandableText from "../components/ExpandableText";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -72,11 +73,14 @@ function GameDetailsPage() {
       </GridItem>
       <GridItem area="main" paddingX={35}>
         {data ? (
-          <Link to={data?.website}>
-            <Text fontSize="3xl" marginLeft={1}>
-              {data?.name}
-            </Text>
-          </Link>
+          <>
+            <Link to={data?.website}>
+              <Text fontSize="3xl" marginLeft={1}>
+                {data?.name}
+              </Text>
+            </Link>
+            <ExpandableText>{data.description_raw}</ExpandableText>
+          </>
         ) : (
           <></>
         )}
