@@ -7,7 +7,13 @@ interface Props {
 
 const SongCardContainer = ({ children }: Props) => {
   return (
-    <Box borderRadius={10} overflow="hidden" w="30%" padding={1}>
+    <Box
+      borderRadius={10}
+      overflow="hidden"
+      w={{ base: "100%", lg: "80%" }}
+      h={{ base: "100%", lg: "80%" }}
+      padding={1}
+    >
       {children}
     </Box>
   );

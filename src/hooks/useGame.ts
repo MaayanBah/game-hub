@@ -12,6 +12,8 @@ export interface Game {
   id: number;
   slug: string;
   name: string;
+  website: string;
+  background_image: string;
 }
 
 const useGame = (slug: string) => {

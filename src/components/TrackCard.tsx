@@ -1,4 +1,12 @@
-import { Card, HStack, Image, Text } from "@chakra-ui/react";
+import {
+  Card,
+  HStack,
+  Image,
+  Spacer,
+  Stack,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Track } from "../hooks/usePlaylist";
 import { Link } from "react-router-dom";
 
@@ -7,16 +15,16 @@ interface Props {
 }
 
 const TrackCard = ({ track }: Props) => {
-  console.log(track.external_urls.spotify);
+  const cardBgColor = useColorModeValue("gray.100", "gray.700");
   return (
-    <Card>
-      <HStack justifyContent="space-between">
-        <Link to={track.external_urls.spotify}>
-          <Text fontSize={"md"} as="u" paddingX={3}>
+    <Card bg={cardBgColor} paddingLeft={3}>
+      <HStack align="center">
+        <Link to={track.external_urls.spotify} style={{ width: "100%" }}>
+          <Text fontSize="xl" minWidth="70%">
             {track.name}
           </Text>
         </Link>
-        <Image src={track.album.images[0].url} width="15%" objectFit="cover" />
+        <Image src={track.album.images[0].url} width="20%" objectFit="cover" />
       </HStack>
     </Card>
   );
