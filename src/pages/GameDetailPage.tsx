@@ -1,4 +1,12 @@
-import { Grid, GridItem, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Card,
+  Grid,
+  GridItem,
+  SimpleGrid,
+  Text,
+  Image,
+  Show,
+} from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenres";
 import { Platform } from "../hooks/useGames";
 import useGame from "../hooks/useGame";
@@ -14,6 +22,7 @@ import NavBar from "../components/NavBar";
 import TrackCard from "../components/TrackCard";
 import SongCardContainer from "../components/TrackCardContainer";
 import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -40,6 +49,7 @@ function GameDetailsPage() {
     fetchTopTracks(playlists, setTopTracks);
   }, [playlists]);
 
+  console.log(data);
   return (
     <Grid
       templateAreas={{
@@ -48,16 +58,24 @@ function GameDetailsPage() {
       }}
       templateColumns={{
         base: "1fr",
-        lg: "1fr 200px",
+        lg: "1fr 1fr",
       }}
     >
       <GridItem area="nav">
         <NavBar onSearch={(searchText) => console.log(searchText)} />
       </GridItem>
       <GridItem area="main" paddingX={35}>
-        <Text fontSize="3xl">{data?.name}</Text>
+        {data ? (
+          <Link to={data?.website}>
+            <Text fontSize="3xl" marginLeft={1}>
+              {data?.name}
+            </Text>
+          </Link>
+        ) : (
+          <></>
+        )}
 
-        <SimpleGrid>
+        <SimpleGrid marginTop={5}>
           {topTracks.map((track) => {
             return (
               <SongCardContainer key={track.id}>
@@ -67,6 +85,17 @@ function GameDetailsPage() {
           })}
         </SimpleGrid>
       </GridItem>
+
+      <Show above="lg">
+        <GridItem area="aside" paddingX={35}>
+          <Image
+            src={data?.background_image}
+            marginLeft={-50}
+            marginTop={100}
+            borderRadius={30}
+          />
+        </GridItem>
+      </Show>
     </Grid>
   );
 }
