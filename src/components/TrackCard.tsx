@@ -1,12 +1,4 @@
-import {
-  Card,
-  HStack,
-  Image,
-  Spacer,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Card, HStack, Image, Text, useColorModeValue } from "@chakra-ui/react";
 import { Track } from "../hooks/usePlaylist";
 import { Link } from "react-router-dom";
 

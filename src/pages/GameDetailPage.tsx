@@ -1,5 +1,4 @@
 import {
-  Card,
   Grid,
   GridItem,
   SimpleGrid,
@@ -20,9 +19,10 @@ import {
 import { Track } from "../hooks/usePlaylist";
 import NavBar from "../components/NavBar";
 import TrackCard from "../components/TrackCard";
-import SongCardContainer from "../components/TrackCardContainer";
+import TrackCardContainer from "../components/TrackCardContainer";
 import "react-multi-carousel/lib/styles.css";
 import { Link } from "react-router-dom";
+import GameCardSkeleton from "../components/CardSkeleton";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -34,22 +34,28 @@ export interface GameQuery {
 function GameDetailsPage() {
   const [playlists, setPlaylists] = useState<SearchPlaylistResult[]>([]);
   const [topTracks, setTopTracks] = useState<Track[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const { slug } = useParams();
   const { data } = useGame(slug!);
 
+  const skeletonCount = 5;
+  const skeletons = Array.from(
+    { length: skeletonCount },
+    (_, index) => index + 1
+  );
+
   let gameName = data?.name;
   useEffect(() => {
     if (!gameName) return;
-
     fetchPlaylist(gameName, setPlaylists);
   }, [gameName]);
 
   useEffect(() => {
-    fetchTopTracks(playlists, setTopTracks);
+    if (!gameName) return;
+    fetchTopTracks(playlists, setTopTracks, setLoading);
   }, [playlists]);
 
-  console.log(data);
   return (
     <Grid
       templateAreas={{
@@ -78,11 +84,17 @@ function GameDetailsPage() {
         <SimpleGrid marginTop={5}>
           {topTracks.map((track) => {
             return (
-              <SongCardContainer key={track.id}>
+              <TrackCardContainer key={track.id}>
                 <TrackCard track={track} />
-              </SongCardContainer>
+              </TrackCardContainer>
             );
           })}
+          {loading &&
+            skeletons.map((id) => (
+              <TrackCardContainer key={id}>
+                <GameCardSkeleton height="25px" />
+              </TrackCardContainer>
+            ))}
         </SimpleGrid>
       </GridItem>
 

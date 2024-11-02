@@ -11,11 +11,13 @@ interface TrackWithCount {
 
 export const fetchTracks = async (
   playlists: SearchPlaylistResult[],
-  setTopTracks: React.Dispatch<React.SetStateAction<Track[]>>
+  setTopTracks: React.Dispatch<React.SetStateAction<Track[]>>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   if (playlists.length > 0) {
     const fetchedTracks = await getTopNSongs(playlists, 5);
     setTopTracks(fetchedTracks);
+    setLoading(false);
   }
 };
 

@@ -1,4 +1,11 @@
-import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  Heading,
+  HStack,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { Game } from "@/hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
@@ -10,9 +17,10 @@ interface Props {
   game: Game;
 }
 const GameCard = ({ game }: Props) => {
+  const cardBgColor = useColorModeValue("gray.100", "gray.700");
   return (
     <>
-      <Card>
+      <Card bg={cardBgColor}>
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <HStack justifyContent="space-between" marginBottom={3}>

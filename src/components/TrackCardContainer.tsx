@@ -5,7 +5,7 @@ interface Props {
   children: ReactNode;
 }
 
-const SongCardContainer = ({ children }: Props) => {
+const TrackCardContainer = ({ children }: Props) => {
   return (
     <Box
       borderRadius={10}
@@ -19,4 +19,4 @@ const SongCardContainer = ({ children }: Props) => {
   );
 };
 
-export default SongCardContainer;
+export default TrackCardContainer;
