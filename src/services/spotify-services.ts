@@ -41,9 +41,16 @@ export const getTopNSongs = async (
       return [];
     })
   );
+
   const allTracks: Track[] = tracks_promise
     .flat()
-    .filter((track): track is Track => track !== null);
+    .filter((track): track is Track => {
+      return (
+        track !== null &&
+        track.external_urls &&
+        Object.keys(track.external_urls).length > 0
+      );
+    });
 
   const trackCount = allTracks.reduce((acc, track) => {
     acc[track.id] = (acc[track.id] || 0) + 1;

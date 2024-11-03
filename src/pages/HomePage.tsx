@@ -2,15 +2,27 @@ import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "../components/NavBar";
 import GameGrid from "../components/GameGrid";
 import GenreList from "../components/GenreList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Genre } from "../hooks/useGenres";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import GameHeading from "../components/GameHeading";
 import { GameQuery } from "../entities/GameQuery";
+import { useLocation } from "react-router-dom";
 
 function HomePage() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  let searchText = queryParams.get("searchText");
+
+  useEffect(() => {
+    if (searchText) {
+      setGameQuery((prev) => ({ ...prev, searchText }));
+    } else {
+      setGameQuery((prev) => ({ ...prev, searchText: "" }));
+    }
+  }, [location]);
 
   return (
     <Grid
