@@ -10,7 +10,5 @@ GameHub is a video game discovery web app that helps you find new and interestin
 2. Run npm install to install the necessary dependencies.
 3. Obtain a RAWG API key from RAWG API documentation. Note that you'll need to create an account.
 4. Add your API key to src/services/api-client.ts.
-5. Start the web server by running npm run dev.
-
-
-You can also visit GameHub directly at: https://game-hub-three-pied.vercel.app/
+5. Create a ".env" file in the project's directory, with `VITE_SPOTIFY_CLIENT_ID` and `VITE_SPOTIFY_CLIENT_SECRET` configured (See [Spotify's official guide](https://developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token))
+6. Start the web server by running npm run dev.
