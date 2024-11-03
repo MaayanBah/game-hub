@@ -16,7 +16,6 @@ const TrackCard = ({ track }: Props) => {
   const cardBgColor = useColorModeValue("gray.100", "gray.700");
   const cardHoverBgColor = useColorModeValue("gray.200", "gray.600");
 
-  // Function to format the duration into MM:SS
   const formatDuration = (duration_ms: number) => {
     const minutes = Math.floor((duration_ms / 1000 / 60) << 0);
     const seconds = Math.floor((duration_ms / 1000) % 60)
@@ -39,6 +38,7 @@ const TrackCard = ({ track }: Props) => {
               src={track.album.images[0].url}
               width={{ base: "20%", lg: "12%" }}
               objectFit="cover"
+              borderRadius={3}
             />
           )}
           <VStack align="flex-start" width="200px">
