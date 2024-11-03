@@ -1,5 +1,13 @@
-import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
-import { Game } from "@/hooks/useGames";
+import {
+  Card,
+  CardBody,
+  Heading,
+  HStack,
+  Image,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import { Game } from "../entities/Game";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
@@ -9,21 +17,24 @@ interface Props {
   game: Game;
 }
 const GameCard = ({ game }: Props) => {
+  const cardBgColor = useColorModeValue("gray.100", "gray.700");
+  const cardHoverBgColor = useColorModeValue("gray.200", "gray.600");
+
   return (
     <>
-      <Card>
+      <Card bg={cardBgColor} _hover={{ bg: cardHoverBgColor }}>
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <HStack justifyContent="space-between" marginBottom={3}>
             <PlatformIconList
-              platforms={game.parent_platforms.map(
+              platforms={game.parent_platforms?.map(
                 (platform) => platform.platform
               )}
             ></PlatformIconList>
             <CriticScore score={game.metacritic}></CriticScore>
           </HStack>
           <Heading fontSize="2xl">
-            {game.name}
+            <Link to={"/games/" + game.slug}>{game.name}</Link>
             <Emoji rating={game.rating_top} />
           </Heading>
         </CardBody>
