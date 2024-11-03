@@ -7,4 +7,5 @@ export interface Track {
   popularity: number;
   album: Album;
   external_urls: { spotify: string };
+  duration_ms: number;
 }

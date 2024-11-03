@@ -26,11 +26,12 @@ const ExpandableText = ({ children, length = 300 }: Props) => {
       <Button
         onClick={onClick}
         size="sm"
+        marginTop={2}
         marginLeft={1}
         fontWeight="bold"
         colorScheme="yellow"
       >
-        {isExpended === true ? "more" : "less"}
+        {isExpended === true ? "More" : "less"}
       </Button>
     </>
   );

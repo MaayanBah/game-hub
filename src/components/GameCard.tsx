@@ -18,9 +18,11 @@ interface Props {
 }
 const GameCard = ({ game }: Props) => {
   const cardBgColor = useColorModeValue("gray.100", "gray.700");
+  const cardHoverBgColor = useColorModeValue("gray.200", "gray.600");
+
   return (
     <>
-      <Card bg={cardBgColor}>
+      <Card bg={cardBgColor} _hover={{ bg: cardHoverBgColor }}>
         <Image src={getCroppedImageUrl(game.background_image)} />
         <CardBody>
           <HStack justifyContent="space-between" marginBottom={3}>
