@@ -1,11 +1,5 @@
 import useData from "./useData";
-
-interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
+import { Platform } from "../entities/Platform";
 const usePlatforms = () => useData<Platform>("/platforms/lists/parents");
 
 export default usePlatforms;

@@ -1,22 +1,7 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Game {
-  id: number;
-  slug: string;
-  name: string;
-  website: string;
-  background_image: string;
-  description: string;
-  description_raw: string;
-}
+import { Game } from "../entities/Game";
 
 const useGame = (slug: string) => {
   let endpoint = `/games/${slug}`;

@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 interface Props {
   onSearch: (searchText: string) => void;
 }
+
 const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   return (

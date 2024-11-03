@@ -6,31 +6,20 @@ import {
   Image,
   Show,
 } from "@chakra-ui/react";
-import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/useGames";
 import useGame from "../hooks/useGame";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { SearchPlaylistResult } from "../hooks/useSearchPlaylists";
 import { useEffect, useState } from "react";
 import {
   fetchPlaylist,
   fetchTracks as fetchTopTracks,
 } from "../services/spotify-services";
-import { Track } from "../hooks/usePlaylist";
+import { Track } from "../entities/Track";
 import NavBar from "../components/NavBar";
 import TrackCard from "../components/TrackCard";
 import TrackCardContainer from "../components/TrackCardContainer";
-import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
 import GameCardSkeleton from "../components/CardSkeleton";
 import ExpandableText from "../components/ExpandableText";
-
-export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string;
-  searchText: string;
-}
 
 function GameDetailsPage() {
   const [playlists, setPlaylists] = useState<SearchPlaylistResult[]>([]);
