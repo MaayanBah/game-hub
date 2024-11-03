@@ -1,17 +1,5 @@
+import { Track } from "../entities/Track";
 import { useSpotify } from "./useSpotify";
-
-export interface Track {
-  name: string;
-  id: string;
-  track: boolean;
-  popularity: number;
-  album: Album;
-  external_urls: { spotify: string };
-}
-
-export interface Album {
-  images: { url: string }[];
-}
 
 export interface Item {
   track: Track;

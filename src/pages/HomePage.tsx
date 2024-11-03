@@ -5,16 +5,10 @@ import GenreList from "../components/GenreList";
 import { useState } from "react";
 import { Genre } from "../hooks/useGenres";
 import PlatformSelector from "../components/PlatformSelector";
-import { Platform } from "../hooks/useGames";
 import SortSelector from "../components/SortSelector";
 import GameHeading from "../components/GameHeading";
+import { GameQuery } from "../entities/GameQuery";
 
-export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
-  sortOrder: string;
-  searchText: string;
-}
 function HomePage() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 

@@ -2,7 +2,7 @@ import useSearchPlaylists, {
   SearchPlaylistResult,
 } from "../hooks/useSearchPlaylists";
 import usePlaylist from "../hooks/usePlaylist";
-import { Track } from "../hooks/usePlaylist";
+import { Track } from "../entities/Track";
 
 interface TrackWithCount {
   track: Track;
@@ -41,7 +41,9 @@ export const getTopNSongs = async (
       return [];
     })
   );
-  const allTracks: Track[] = tracks_promise.flat();
+  const allTracks: Track[] = tracks_promise
+    .flat()
+    .filter((track): track is Track => track !== null);
 
   const trackCount = allTracks.reduce((acc, track) => {
     acc[track.id] = (acc[track.id] || 0) + 1;

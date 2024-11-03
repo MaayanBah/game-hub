@@ -1,21 +1,6 @@
-import { GameQuery } from "../pages/HomePage";
+import { GameQuery } from "../entities/GameQuery";
 import useData from "./useData";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating_top: number;
-}
+import { Game } from "../entities/Game";
 
 const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
