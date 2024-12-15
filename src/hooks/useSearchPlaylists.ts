@@ -24,7 +24,7 @@ const useSearchPlaylists = async (
         )}&type=playlist&limit=${limit}`
       );
     if (data?.playlists && data.playlists.items.length > 0) {
-      return data.playlists.items;
+      return data.playlists.items.filter((item) => item != null);
     } else {
       return [];
     }
