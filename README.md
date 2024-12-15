@@ -11,7 +11,9 @@ With the Spotify API, GameHub also connects you to music inspired by your favori
 </p>
 
 <br>
+<p align="center">
 <img src="https://github.com/MaayanBah/game-hub/blob/359b8814feb79443d79fed31dec49c56f3e12386/screenshots/spotify.png" alt="image" width="400"/>
+</p>
 
 ### Built With 🛠
 
