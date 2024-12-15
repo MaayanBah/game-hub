@@ -4,10 +4,13 @@ GameHub is a video game discovery web app that helps you find new and interestin
 Using the RAWG API, GameHub provides personalized game suggestions based on your interests.
 With the Spotify API, GameHub also connects you to music inspired by your favorite games!
 
+<p align="center">
 <img src="https://github.com/MaayanBah/game-hub/blob/359b8814feb79443d79fed31dec49c56f3e12386/screenshots/dark_mode.png" alt="image" width="400"/>
 
 <img src="https://github.com/MaayanBah/game-hub/blob/359b8814feb79443d79fed31dec49c56f3e12386/screenshots/light_mode.png" alt="image" width="400"/>
+</p>
 
+<br>
 <img src="https://github.com/MaayanBah/game-hub/blob/359b8814feb79443d79fed31dec49c56f3e12386/screenshots/spotify.png" alt="image" width="400"/>
 
 ### Built With 🛠
