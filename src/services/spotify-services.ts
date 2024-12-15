@@ -35,7 +35,8 @@ export const getTopNSongs = async (
 ) => {
   const tracks_promise: Track[][] = await Promise.all(
     playlists.map(async (playlist) => {
-      if (playlist.tracks.total > 0) {
+      console.log(playlist);
+      if (playlist?.tracks?.total > 0) {
         return await usePlaylist(playlist.id);
       }
       return [];
