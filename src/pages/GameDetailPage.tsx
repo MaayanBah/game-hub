@@ -1,16 +1,16 @@
 import { Grid, GridItem, Image, Show } from "@chakra-ui/react";
-import useGame from "../hooks/useGame";
-import { useParams } from "react-router-dom";
-import { SearchPlaylistResult } from "../hooks/useSearchPlaylists";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import GameHeader from "../components/GameHeader";
+import NavBar from "../components/NavBar";
+import TrackGrid from "../components/TrackGrid";
+import { Track } from "../entities/Track";
+import useGame from "../hooks/useGame";
+import { SearchPlaylistResult } from "../hooks/useSearchPlaylists";
 import {
   fetchPlaylist,
   fetchTracks as fetchTopTracks,
 } from "../services/spotify-services";
-import { Track } from "../entities/Track";
-import NavBar from "../components/NavBar";
-import GameHeader from "../components/GameHeader";
-import TrackGrid from "../components/TrackGrid";
 
 function GameDetailsPage() {
   const [playlists, setPlaylists] = useState<SearchPlaylistResult[]>([]);
@@ -18,7 +18,7 @@ function GameDetailsPage() {
   const [loadingTracks, setLoadingTracks] = useState<boolean>(true);
 
   const { slug } = useParams();
-  const { data } = useGame(slug!);
+  const { data, isLoading, error } = useGame(slug!);
 
   let gameName = data?.name;
   useEffect(() => {
