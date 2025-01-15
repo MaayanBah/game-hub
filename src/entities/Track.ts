@@ -1,7 +1,7 @@
-import { Album } from "./Album";
-import { Artist } from "./Artist";
+import Album from "./Album";
+import Artist from "./Artist";
 
-export interface Track {
+export default interface Track {
   name: string;
   id: string;
   track: boolean;

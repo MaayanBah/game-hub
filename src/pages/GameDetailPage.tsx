@@ -1,11 +1,11 @@
-import { Grid, GridItem, Image, Show, Spinner } from "@chakra-ui/react";
+import { Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameAttributes from "../components/GameAttributes";
 import GameHeader from "../components/GameHeader";
 import GameTrailer from "../components/GameTrailer";
 import TrackGrid from "../components/TrackGrid";
-import { Track } from "../entities/Track";
+import Track from "../entities/Track";
 import useGame from "../hooks/useGame";
 import { SearchPlaylistResult } from "../hooks/useSearchPlaylists";
 import {

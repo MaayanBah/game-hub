@@ -2,7 +2,7 @@ import useSearchPlaylists, {
   SearchPlaylistResult,
 } from "../hooks/useSearchPlaylists";
 import usePlaylist from "../hooks/usePlaylist";
-import { Track } from "../entities/Track";
+import Track from "../entities/Track";
 
 interface TrackWithCount {
   track: Track;

@@ -1,4 +1,4 @@
-export interface screenshot {
+export default interface screenshot {
   id: number;
   image: string;
   width: number;
