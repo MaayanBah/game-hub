@@ -17,9 +17,11 @@ function GameDetailsPage() {
   const [loadingTracks, setLoadingTracks] = useState<boolean>(true);
 
   const { slug } = useParams();
-  const { data, isLoading, error } = useGame(slug!);
+  const { data: game, isLoading, error } = useGame(slug!);
 
-  let gameName = data?.name;
+  if (error) throw error;
+
+  let gameName = game?.name;
   useEffect(() => {
     if (!gameName) return;
     fetchPlaylist(gameName, setPlaylists);
@@ -42,14 +44,14 @@ function GameDetailsPage() {
       }}
     >
       <GridItem area="main" paddingX={35}>
-        {data && <GameHeader data={data} />}
+        {game && <GameHeader data={game} />}
         <TrackGrid topTracks={topTracks} loading={loadingTracks} />
       </GridItem>
 
       <Show above="lg">
         <GridItem area="aside" paddingX={35}>
           <Image
-            src={data?.background_image}
+            src={game?.background_image}
             marginLeft={-50}
             marginTop={100}
             borderRadius={30}
