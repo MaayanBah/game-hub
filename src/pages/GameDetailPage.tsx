@@ -1,4 +1,4 @@
-import { Grid, GridItem, Image, Show } from "@chakra-ui/react";
+import { Grid, GridItem, Image, Show, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameHeader from "../components/GameHeader";
@@ -19,8 +19,6 @@ function GameDetailsPage() {
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
-  if (error) throw error;
-
   let gameName = game?.name;
   useEffect(() => {
     if (!gameName) return;
@@ -31,6 +29,10 @@ function GameDetailsPage() {
     if (!gameName) return;
     fetchTopTracks(playlists, setTopTracks, setLoadingTracks);
   }, [playlists]);
+
+  if (isLoading) return <Spinner />;
+
+  if (error) throw error;
 
   return (
     <Grid
