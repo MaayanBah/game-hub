@@ -12,6 +12,7 @@ import {
   fetchPlaylist,
   fetchTracks as fetchTopTracks,
 } from "../services/spotify-services";
+import Screenshots from "../components/GameScreenshots";
 
 function GameDetailsPage() {
   const [playlists, setPlaylists] = useState<SearchPlaylistResult[]>([]);
@@ -56,12 +57,7 @@ function GameDetailsPage() {
 
       <Show above="lg">
         <GridItem area="aside" paddingX={35}>
-          <Image
-            src={game.background_image}
-            marginLeft={-50}
-            marginTop={100}
-            borderRadius={30}
-          />
+          <Screenshots gameId={game.id} />
         </GridItem>
       </Show>
     </Grid>
