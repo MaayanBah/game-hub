@@ -1,7 +1,9 @@
 import { Grid, GridItem, Image, Show, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import GameAttributes from "../components/GameAttributes";
 import GameHeader from "../components/GameHeader";
+import GameTrailer from "../components/GameTrailer";
 import TrackGrid from "../components/TrackGrid";
 import { Track } from "../entities/Track";
 import useGame from "../hooks/useGame";
@@ -32,7 +34,7 @@ function GameDetailsPage() {
 
   if (isLoading) return <Spinner />;
 
-  if (error) throw error;
+  if (error || !game) throw error;
 
   return (
     <Grid
@@ -47,13 +49,15 @@ function GameDetailsPage() {
     >
       <GridItem area="main" paddingX={35}>
         {game && <GameHeader data={game} />}
+        <GameAttributes game={game} />
+        <GameTrailer gameId={game.id} />
         <TrackGrid topTracks={topTracks} loading={loadingTracks} />
       </GridItem>
 
       <Show above="lg">
         <GridItem area="aside" paddingX={35}>
           <Image
-            src={game?.background_image}
+            src={game.background_image}
             marginLeft={-50}
             marginTop={100}
             borderRadius={30}
