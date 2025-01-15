@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Show, Spinner } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GameAttributes from "../components/GameAttributes";
@@ -50,9 +50,11 @@ function GameDetailsPage() {
     >
       <GridItem area="main" paddingX={35}>
         {game && <GameHeader data={game} />}
-        <GameAttributes game={game} />
-        <GameTrailer gameId={game.id} />
+        <Box marginTop={5}>
+          <GameTrailer gameId={game.id} />
+        </Box>
         <TrackGrid topTracks={topTracks} loading={loadingTracks} />
+        <GameAttributes game={game} />
       </GridItem>
 
       <Show above="lg">
