@@ -1,20 +1,14 @@
-import { apiInstance } from "../services/api-client";
-import { Game } from "../entities/Game";
-import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
+import ms from "ms";
+import { Game } from "../entities/Game";
+import APIClient from "../services/api-client";
+
+const apiClient = new APIClient<Game>("/games");
 
 const useGame = (slug: string) => {
-  let endpoint = `/games/${slug}`;
-  const controller = new AbortController();
-
   return useQuery<Game, Error>({
     queryKey: ["game", slug],
-    queryFn: () =>
-      apiInstance
-        .get<Game>(endpoint, {
-          signal: controller.signal,
-        })
-        .then((res) => res.data),
+    queryFn: () => apiClient.get(slug),
     staleTime: ms("24h"),
   });
 };
