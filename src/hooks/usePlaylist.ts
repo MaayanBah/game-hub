@@ -1,4 +1,4 @@
-import { Track } from "../entities/Track";
+import Track from "../entities/Track";
 import { useSpotify } from "./useSpotify";
 
 export interface Item {

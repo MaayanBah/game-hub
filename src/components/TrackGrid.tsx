@@ -1,4 +1,4 @@
-import { Track } from "../entities/Track";
+import Track from "../entities/Track";
 import { SimpleGrid } from "@chakra-ui/react";
 import TrackCardContainer from "./TrackCardContainer";
 import TrackCard from "./TrackCard";

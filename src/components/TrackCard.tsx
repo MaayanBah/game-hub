@@ -6,7 +6,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { Track } from "../entities/Track";
+import Track from "../entities/Track";
 
 interface Props {
   track: Track;

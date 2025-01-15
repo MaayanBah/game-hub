@@ -1,4 +1,4 @@
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 import { Link } from "react-router-dom";
 import ExpandableText from "./ExpandableText";
 import { Text } from "@chakra-ui/react";
