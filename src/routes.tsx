@@ -3,6 +3,8 @@ import GameDetailPage from "./pages/GameDetailPage";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
 import ErrorPage from "./pages/ErrorPage";
+import CallbackPage from "./pages/CallbackPage";
+import LoginPage from "./pages/LoginPage";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +14,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "games/:slug", element: <GameDetailPage /> },
+      { path: "callback", element: <CallbackPage /> },
+      { path: "login", element: <LoginPage /> },
     ],
   },
 ]);
