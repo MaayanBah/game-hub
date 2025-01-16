@@ -13,25 +13,30 @@ import {
   fetchTracks as fetchTopTracks,
 } from "../services/spotify-services";
 import Screenshots from "../components/GameScreenshots";
+import useAuthStore from "../state-management/spotify-auth/store";
+import LoginPage from "./LoginPage";
 
 function GameDetailsPage() {
   const [playlists, setPlaylists] = useState<SearchPlaylistResult[]>([]);
   const [topTracks, setTopTracks] = useState<Track[]>([]);
   const [loadingTracks, setLoadingTracks] = useState<boolean>(true);
+  const { accessToken } = useAuthStore();
 
   const { slug } = useParams();
   const { data: game, isLoading, error } = useGame(slug!);
 
   let gameName = game?.name;
-  useEffect(() => {
-    if (!gameName) return;
-    fetchPlaylist(gameName, setPlaylists);
-  }, [gameName]);
+  if (accessToken) {
+    useEffect(() => {
+      if (!gameName) return;
+      fetchPlaylist(gameName, setPlaylists, accessToken);
+    }, [gameName]);
 
-  useEffect(() => {
-    if (!gameName) return;
-    fetchTopTracks(playlists, setTopTracks, setLoadingTracks);
-  }, [playlists]);
+    useEffect(() => {
+      if (!gameName) return;
+      fetchTopTracks(playlists, setTopTracks, setLoadingTracks, accessToken);
+    }, [playlists]);
+  }
 
   if (isLoading) return <Spinner />;
 
@@ -53,7 +58,11 @@ function GameDetailsPage() {
         <Box marginTop={5}>
           <GameTrailer gameId={game.id} />
         </Box>
-        <TrackGrid topTracks={topTracks} loading={loadingTracks} />
+        {accessToken ? (
+          <TrackGrid topTracks={topTracks} loading={loadingTracks} />
+        ) : (
+          <LoginPage />
+        )}
         <GameAttributes game={game} />
       </GridItem>
 

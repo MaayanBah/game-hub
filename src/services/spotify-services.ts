@@ -12,10 +12,11 @@ interface TrackWithCount {
 export const fetchTracks = async (
   playlists: SearchPlaylistResult[],
   setTopTracks: React.Dispatch<React.SetStateAction<Track[]>>,
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  accessToken: string
 ) => {
   if (playlists.length > 0) {
-    const fetchedTracks = await getTopNSongs(playlists, 5);
+    const fetchedTracks = await getTopNSongs(playlists, 5, accessToken);
     setTopTracks(fetchedTracks);
     setLoading(false);
   }
@@ -23,20 +24,22 @@ export const fetchTracks = async (
 
 export const fetchPlaylist = async (
   gameName: string,
-  setPlaylists: React.Dispatch<React.SetStateAction<SearchPlaylistResult[]>>
+  setPlaylists: React.Dispatch<React.SetStateAction<SearchPlaylistResult[]>>,
+  accessToken: string
 ) => {
-  const fetchedPlaylist = await useSearchPlaylists(gameName, 10);
+  const fetchedPlaylist = await useSearchPlaylists(gameName, 10, accessToken);
   setPlaylists(fetchedPlaylist);
 };
 
 export const getTopNSongs = async (
   playlists: SearchPlaylistResult[],
-  topN: number
+  topN: number,
+  accessToken: string
 ) => {
   const tracks_promise: Track[][] = await Promise.all(
     playlists.map(async (playlist) => {
       if (playlist.tracks.total > 0) {
-        return await usePlaylist(playlist.id);
+        return await usePlaylist(playlist.id, accessToken);
       }
       return [];
     })

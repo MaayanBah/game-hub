@@ -9,11 +9,15 @@ interface SpotifyPlaylistResponse {
   items: Item[];
 }
 
-const usePlaylist = async (playlistId: string): Promise<Track[]> => {
+const usePlaylist = async (
+  playlistId: string,
+  accessToken: string
+): Promise<Track[]> => {
   try {
     const data: SpotifyPlaylistResponse | null =
       await useSpotify<SpotifyPlaylistResponse>(
-        `/playlists/${playlistId}/tracks`
+        `/playlists/${playlistId}/tracks`,
+        accessToken
       );
 
     if (data?.items && data?.items.length > 0) {

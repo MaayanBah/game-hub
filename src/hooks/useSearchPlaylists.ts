@@ -14,14 +14,16 @@ interface SpotifySearchPlaylistResponse {
 
 const useSearchPlaylists = async (
   searchQuery: string,
-  limit: number
+  limit: number,
+  accessToken: string
 ): Promise<SearchPlaylistResult[]> => {
   try {
     const data: SpotifySearchPlaylistResponse | null =
       await useSpotify<SpotifySearchPlaylistResponse>(
         `/search?q=${encodeURIComponent(
           searchQuery
-        )}&type=playlist&limit=${limit}`
+        )}&type=playlist&limit=${limit}`,
+        accessToken
       );
     if (data?.playlists && data.playlists.items.length > 0) {
       return data.playlists.items.filter((item) => item != null);
