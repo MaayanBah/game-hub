@@ -7,7 +7,7 @@ const LoginPage = () => {
   const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=user-library-read`;
 
   return (
-    <Box padding={5}>
+    <Box paddingY={5}>
       <Button
         onClick={() => (window.location.href = authUrl)}
         backgroundColor="#1DB954"
