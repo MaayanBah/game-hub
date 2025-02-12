@@ -1,5 +1,9 @@
 # GameHub 🎮🎶
 
+<p style="color: red;">
+This project allows you to log in with your Spotify account, but the integration is currently pending approval. If you'd like to access this feature, please contact me at maayanbah@gmail.com
+</p>
+
 GameHub is a video game discovery web app that helps you find new and interesting games to play.
 Using the RAWG API, GameHub provides personalized game suggestions based on your interests.
 With the Spotify API, GameHub also connects you to music inspired by your favorite games!
